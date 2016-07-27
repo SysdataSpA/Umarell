@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Umarell"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Umarell is a easy-to-use library that makes simple the implementation of the Publish-Subscribe pattern in Objective-C."
   s.homepage         = "https://github.com/sysdatadigital/Umarell"
   s.license          = 'Apache 2.0'
