@@ -69,7 +69,8 @@
  */
 + (NSString*) uniqueIdentifierForSubscriber:(id _Nonnull)subscriber
 {
-    return [NSString stringWithFormat:@"%lu",(unsigned long)[subscriber hash]];
+    NSString* identifier = [NSString stringWithFormat:@"%lu_%p",(unsigned long)[subscriber hash], subscriber];
+    return identifier;
 }
 
 @end
