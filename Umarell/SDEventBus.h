@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef void (^ PublishSubscribeBlock)(id _Nonnull publishedObject);
 typedef void (^ PublishSubscribeKVOBlock)(id _Nonnull changedObject, NSString* _Nonnull keypath);
