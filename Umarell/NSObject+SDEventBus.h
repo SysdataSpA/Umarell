@@ -18,4 +18,6 @@
 
 @interface NSObject (SDEventBus)
 
+@property (nonatomic, strong, readonly, nonnull) NSString* instanceUniqueIdentifier;
+
 @end

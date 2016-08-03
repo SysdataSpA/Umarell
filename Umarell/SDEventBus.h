@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 typedef void (^ PublishSubscribeBlock)(id _Nonnull publishedObject);
 typedef void (^ PublishSubscribeKVOBlock)(id _Nonnull changedObject, NSString* _Nonnull keypath);
@@ -46,7 +45,7 @@ typedef NS_ENUM (NSUInteger, SubscribeOption)
  *
  *  @return The SDEventBus singleton.
  */
-+ (_Nullable instancetype) sharedManager;
++ (_Nullable instancetype) sharedInstance;
 
 
 #pragma mark Subscribers

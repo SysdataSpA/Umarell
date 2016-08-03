@@ -15,6 +15,8 @@
 #import "NSObject+SDEventBus.h"
 #import <objc/runtime.h> // very important to import this!
 
+#define EVENT_BUS_KEY_UNIQUE_IDENTIFIER @"uniqueIdentifier"
+
 @implementation NSObject (SDEventBus)
 
 + (NSSet*) keyPathsForValuesAffectingObservableSelf
@@ -48,6 +50,19 @@
 - (NSInteger) observableSelf
 {
     return 0;
+}
+
+#pragma mark Unique Identifier
+
+- (NSString *)instanceUniqueIdentifier
+{
+    NSString* identifier = objc_getAssociatedObject(self, EVENT_BUS_KEY_UNIQUE_IDENTIFIER);
+    if(!identifier)
+    {
+        identifier = [NSString stringWithFormat:@"%lu_%p_%d",(unsigned long)[self hash], self, arc4random_uniform(99999)];
+        objc_setAssociatedObject(self, EVENT_BUS_KEY_UNIQUE_IDENTIFIER, identifier, OBJC_ASSOCIATION_COPY);
+    }
+    return identifier;
 }
 
 @end

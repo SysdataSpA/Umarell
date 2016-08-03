@@ -69,7 +69,16 @@
  */
 + (NSString*) uniqueIdentifierForSubscriber:(id _Nonnull)subscriber
 {
-    NSString* identifier = [NSString stringWithFormat:@"%lu_%p",(unsigned long)[subscriber hash], subscriber];
+    NSString* identifier;
+    if([subscriber respondsToSelector:@selector(instanceUniqueIdentifier)])
+    {
+        identifier = [subscriber performSelector:@selector(instanceUniqueIdentifier)];
+    }
+    else
+    {
+        identifier = [NSString stringWithFormat:@"%lu_%p",(unsigned long)[subscriber hash], subscriber];
+    }
+    
     return identifier;
 }
 
@@ -189,16 +198,16 @@
 
 #pragma mark - Singleton Pattern
 
-+ (instancetype) sharedManager
++ (instancetype) sharedInstance
 {
     static dispatch_once_t pred;
-    static id sharedManagerInstance_ = nil;
+    static id sharedInstance_ = nil;
     
     dispatch_once(&pred, ^{
-        sharedManagerInstance_ = [[self alloc] init];
+        sharedInstance_ = [[self alloc] init];
     });
     
-    return sharedManagerInstance_;
+    return sharedInstance_;
 }
 
 #pragma mark - Load methods
@@ -267,7 +276,7 @@
         }
         
         [self.channels removeObjectForKey:channel.channelName];
-        SDLogVerbose(@"Channel with 0 subscribers deleted: %@", channel.channelName);
+        SDLogVerbose(@"Channel with 0 subscribers deleted: channel=%@", channel.channelName);
     }
 }
 
@@ -374,7 +383,7 @@
             completion(previousObject);
         }
     }
-    SDLogVerbose(@"Subscriber added to channel %@", channelName);
+    SDLogVerbose(@"Subscriber added to channel: subscriber=%@ channel=%@", subscriber, channelName);
 }
 
 - (void) removeSubscriber:(id _Nonnull)subscriber toChannelWithName:(NSString* _Nonnull)channelName
@@ -408,7 +417,7 @@
     if (info)
     {
         [channel.subscriptions removeObject:info];
-        SDLogVerbose(@"Subscriber removed from channel %@", channel.channelName);
+        SDLogVerbose(@"Subscriber removed from channel: subscriber=%@ channel=%@", subscriber, channel.channelName);
     }
     
     // check if it's the case to release the channel
@@ -597,7 +606,7 @@
         channel.kvoActive = YES;
         channel.kvoKeyPath = keyPath;
         channel.kvoObject = object;
-        channel.publishOption = kPublishOptionKeepInMemory;
+        channel.publishOption = kPublishOptionNone;
         
         SDLogVerbose(@"KVO channel created: %@ - Keypath: %@", channel.channelName, keyPath);
     }
@@ -643,7 +652,7 @@
         // adds the subscriber to the channel
         [self addSubscriber:subscriber toChannelWithName:channelName options:kSubscribeOptionNone completion:nil kvoCompletion:completion];
         
-        SDLogVerbose(@"Subscriber added to KVO channel %@ for keyPath %@", channelName, keyPath);
+        SDLogVerbose(@"Subscriber added to KVO channel: subscriber=%@ channel=%@ keyPath=%@", subscriber, channelName, keyPath);
     }
 }
 
@@ -668,7 +677,7 @@
         // adds the subscriber to the channel
         [self addSubscriber:subscriber toChannelWithName:channelName options:kSubscribeOptionNone completion:completion kvoCompletion:nil];
         
-        SDLogVerbose(@"Subscriber added to KVO channel %@ for all the properties.", channelName);
+        SDLogVerbose(@"Subscriber added to KVO for all the properties: subscriber=%@ channel=%@", subscriber, channelName);
     }
 }
 
