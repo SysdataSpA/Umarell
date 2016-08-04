@@ -14,7 +14,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^ PublishSubscribeBlock)(id _Nonnull publishedObject);
+typedef void (^ PublishSubscribeBlock)(id _Nullable publishedObject);
 typedef void (^ PublishSubscribeKVOBlock)(id _Nonnull changedObject, NSString* _Nonnull keypath);
 
 /**
@@ -107,7 +107,7 @@ typedef NS_ENUM (NSUInteger, SubscribeOption)
  *  @param channelName The name of the channel.
  *  @param option      The persistence option for the published object (see `PublishOption` for more infos).
  */
-- (void) publishObject:(id _Nonnull)object onChannelWithName:(NSString* _Nonnull)channelName options:(PublishOption)option;
+- (void) publishObject:(id _Nullable)object onChannelWithName:(NSString* _Nonnull)channelName options:(PublishOption)option;
 
 /**
  *  Publish an object on the given channel.
@@ -117,7 +117,7 @@ typedef NS_ENUM (NSUInteger, SubscribeOption)
  *
  *  @discussion         This method use the `kPublishOptionNone` persistence option.
  */
-- (void) publishObject:(id _Nonnull)object onChannelWithName:(NSString* _Nonnull)channelName;
+- (void) publishObject:(id _Nullable)object onChannelWithName:(NSString* _Nonnull)channelName;
 
 
 #pragma mark Flush

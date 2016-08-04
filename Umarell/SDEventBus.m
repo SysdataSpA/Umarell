@@ -431,20 +431,23 @@
 {
     SDEventBusChannel* channel = [self channelWithName:channelName createIfNil:NO];
     
-    if (!channel.object)
+    id retreivedObject = channel.object;
+    if (!retreivedObject)
     {
         // try to retrieve from NSUserDefaults
         NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
         id unarchivedObject = [userDefaults objectForKey:channelName];
         if (unarchivedObject)
         {
-            channel.object = [NSKeyedUnarchiver unarchiveObjectWithData:unarchivedObject];
+            retreivedObject = [NSKeyedUnarchiver unarchiveObjectWithData:unarchivedObject];
+            channel.object = retreivedObject;
             channel.publishOption = kPublishOptionPersistOnUserDefaults;
             
             SDLogVerbose(@"Object retrieved from NSUserDefaults for channel %@", channelName);
         }
     }
-    return channel.object;
+    
+    return retreivedObject;
 }
 
 /**
@@ -478,12 +481,12 @@
 
 #pragma mark Publishers
 
-- (void) publishObject:(id _Nonnull)object onChannelWithName:(NSString* _Nonnull)channelName
+- (void) publishObject:(id _Nullable)object onChannelWithName:(NSString* _Nonnull)channelName
 {
     [self publishObject:object onChannelWithName:channelName options:kPublishOptionNone];
 }
 
-- (void) publishObject:(id _Nonnull)object onChannelWithName:(NSString* _Nonnull)channelName options:(PublishOption)option
+- (void) publishObject:(id _Nullable)object onChannelWithName:(NSString* _Nonnull)channelName options:(PublishOption)option
 {
     if (!object)
     {

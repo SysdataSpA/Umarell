@@ -1,4 +1,7 @@
 # Umarell 
+
+![Alt text](/Icon.png  "Umarell Logo")
+
 ## Summary
 > [*Introduction*](#introduction)
 > 
