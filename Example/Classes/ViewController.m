@@ -43,32 +43,32 @@
         observedTimer = [NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL target:self selector:@selector(timerUpdate) userInfo:nil repeats:YES];
     }
     __weak typeof (self) weakSelf = self;
-    [[SDEventBus sharedManager] addSubscriber:self toObject:self keyPath:@"timerValue" withCompletion:^(id _Nonnull changedObject, NSString* _Nonnull keypath) {
+    [[SDEventBus sharedInstance] addSubscriber:self toObject:self keyPath:@"timerValue" withCompletion:^(id _Nonnull changedObject, NSString* _Nonnull keypath) {
         weakSelf.observedPropertyLabel.text = [NSString stringWithFormat:@"Observed property value: %@", weakSelf.timerValue];
     }];
 }
 
 - (IBAction) removeSubscriberToProperty:(id)sender
 {
-    [[SDEventBus sharedManager] removeSubscriber:self toObject:self];
+    [[SDEventBus sharedInstance] removeSubscriber:self toObject:self];
 }
 
 - (IBAction) addSubscriberToChannel:(id)sender
 {
     __weak typeof (self) weakSelf = self;
-    [[SDEventBus sharedManager] addSubscriber:self toChannelWithName:CHANNEL_NAME withCompletion:^(id _Nonnull publishedObject) {
+    [[SDEventBus sharedInstance] addSubscriber:self toChannelWithName:CHANNEL_NAME withCompletion:^(id _Nonnull publishedObject) {
         weakSelf.observedChannelLabel.text = [NSString stringWithFormat:@"Observed channel value:\n%@", publishedObject];
     }];
 }
 
 - (IBAction) sendMessageToChannell:(id)sender
 {
-    [[SDEventBus sharedManager] publishObject:[NSString stringWithFormat:CHANNEL_OBJECT, rand()] onChannelWithName:CHANNEL_NAME options:kPublishOptionNone];
+    [[SDEventBus sharedInstance] publishObject:[NSString stringWithFormat:CHANNEL_OBJECT, rand()] onChannelWithName:CHANNEL_NAME options:kPublishOptionNone];
 }
 
 - (IBAction) removeSubscriberToChannel:(id)sender
 {
-    [[SDEventBus sharedManager] removeSubscriber:self toChannelWithName:CHANNEL_NAME];
+    [[SDEventBus sharedInstance] removeSubscriber:self toChannelWithName:CHANNEL_NAME];
 }
 
 - (void) timerUpdate
