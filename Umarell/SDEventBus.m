@@ -17,7 +17,7 @@
 #import <UIKit/UIApplication.h>
 
 // This code is compatible with our logger "Plinio".
-#define kUmarellLogModuleName @"SysdataCore.LocalizationManager"
+#define kUmarellLogModuleName @"it.sysdata.Umarell"
 #define kUmarellLogModuleColor @"fbeed7"
 #ifdef SD_LOGGER_AVAILABLE
 #import "SDLogger.h"
