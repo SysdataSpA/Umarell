@@ -14,8 +14,11 @@
 
 #import "SDEventBus.h"
 #import "NSObject+SDEventBus.h"
+#import <UIKit/UIApplication.h>
 
 // This code is compatible with our logger "Plinio".
+#define kUmarellLogModuleName @"SysdataCore.LocalizationManager"
+#define kUmarellLogModuleColor @"fbeed7"
 #ifdef SD_LOGGER_AVAILABLE
 #import "SDLogger.h"
 #else
@@ -23,6 +26,10 @@
 #define SDLogWarning(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
 #define SDLogInfo(frmt, ...)    NSLog(frmt, ##__VA_ARGS__)
 #define SDLogVerbose(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
+#define SDLogModuleError(mdl, frmt, ...)   NSLog(frmt, ##__VA_ARGS__)
+#define SDLogModuleWarning(mdl, frmt, ...) NSLog(frmt, ##__VA_ARGS__)
+#define SDLogModuleInfo(mdl, frmt, ...)    NSLog(frmt, ##__VA_ARGS__)
+#define SDLogModuleVerbose(mdl, frmt, ...) NSLog(frmt, ##__VA_ARGS__)
 #endif
 
 // ----------------------------------------------------------------------------------------------------------
@@ -217,6 +224,15 @@
     self = [super init];
     if (self)
     {
+#ifdef SD_LOGGER_AVAILABLE
+        // Log module
+        [[SDLogger sharedLogger] setLogLevel:SDLogLevelVerbose forModuleWithName:kUmarellLogModuleName];
+        SDLogModuleSetting* setting = [[SDLogger sharedLogger] moduleWithName:kUmarellLogModuleName];
+        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelVerbose] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelVerbose];
+        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelInfo] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelInfo];
+        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelWarning] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelWarning];
+        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelError] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelError];
+#endif
         _channels = [NSMutableDictionary new];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
@@ -276,7 +292,7 @@
         }
         
         [self.channels removeObjectForKey:channel.channelName];
-        SDLogVerbose(@"Channel with 0 subscribers deleted: channel=%@", channel.channelName);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"Channel with 0 subscribers deleted: channel=%@", channel.channelName);
     }
 }
 
@@ -383,7 +399,7 @@
             completion(previousObject);
         }
     }
-    SDLogVerbose(@"Subscriber added to channel: subscriber=%@ channel=%@", subscriber, channelName);
+    SDLogModuleVerbose(kUmarellLogModuleName, @"Subscriber added to channel: subscriber=%@ channel=%@", subscriber, channelName);
 }
 
 - (void) removeSubscriber:(id _Nonnull)subscriber toChannelWithName:(NSString* _Nonnull)channelName
@@ -417,7 +433,7 @@
     if (info)
     {
         [channel.subscriptions removeObject:info];
-        SDLogVerbose(@"Subscriber removed from channel: subscriber=%@ channel=%@", subscriber, channel.channelName);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"Subscriber removed from channel: subscriber=%@ channel=%@", subscriber, channel.channelName);
     }
     
     // check if it's the case to release the channel
@@ -443,7 +459,7 @@
             channel.object = retreivedObject;
             channel.publishOption = kPublishOptionPersistOnUserDefaults;
             
-            SDLogVerbose(@"Object retrieved from NSUserDefaults for channel %@", channelName);
+            SDLogModuleVerbose(kUmarellLogModuleName, @"Object retrieved from NSUserDefaults for channel %@", channelName);
         }
     }
     
@@ -475,7 +491,7 @@
             }
         }
         
-        SDLogVerbose(@"Notification for subscribers of channel %@", channel.channelName);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"Notification for subscribers of channel %@", channel.channelName);
     }
 }
 
@@ -490,7 +506,7 @@
 {
     if (!object)
     {
-        SDLogError(@"Cannot publish a nil object! Channel: %@", channelName);
+        SDLogModuleError(kUmarellLogModuleName, @"Cannot publish a nil object! Channel: %@", channelName);
         return;
     }
     
@@ -515,12 +531,12 @@
                 [userDefaults setObject:archivedObject forKey:channelName];
                 [userDefaults synchronize];
                 
-                SDLogVerbose(@"Object saved into NSUserDefaults for channel %@", channelName);
+                SDLogModuleVerbose(kUmarellLogModuleName, @"Object saved into NSUserDefaults for channel %@", channelName);
             }
         }
         else
         {
-            SDLogWarning(@"It's not possible to save an object that doesn't conforms NSCoding into NSUserDefaults. The object's class should implement `initWithCoder:` and `encodeWithCoder:`");
+            SDLogModuleWarning(kUmarellLogModuleName, @"It's not possible to save an object that doesn't conforms NSCoding into NSUserDefaults. The object's class should implement `initWithCoder:` and `encodeWithCoder:`");
         }
     }
     // if the object must not be persisted, delete it.
@@ -566,7 +582,7 @@
         [userDefaults removeObjectForKey:channel.channelName];
         [userDefaults synchronize];
         
-        SDLogVerbose(@"Flush of channel %@", channel.channelName);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"Flush of channel %@", channel.channelName);
     }
 }
 
@@ -597,7 +613,7 @@
         
         if (!channelName)
         {
-            SDLogWarning(@"You're trying to create a KVO channel with a nil object or a nil keypath.");
+            SDLogModuleWarning(kUmarellLogModuleName, @"You're trying to create a KVO channel with a nil object or a nil keypath.");
             return;
         }
         
@@ -611,7 +627,7 @@
         channel.kvoObject = object;
         channel.publishOption = kPublishOptionNone;
         
-        SDLogVerbose(@"KVO channel created: %@ - Keypath: %@", channel.channelName, keyPath);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"KVO channel created: %@ - Keypath: %@", channel.channelName, keyPath);
     }
 }
 
@@ -639,7 +655,7 @@
         
         [self flushObjectOfChannel:channel];
         
-        SDLogVerbose(@"KVO channel deleted %@ - Keypath: %@", channel.channelName, keyPath);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"KVO channel deleted %@ - Keypath: %@", channel.channelName, keyPath);
     }
 }
 
@@ -655,7 +671,7 @@
         // adds the subscriber to the channel
         [self addSubscriber:subscriber toChannelWithName:channelName options:kSubscribeOptionNone completion:nil kvoCompletion:completion];
         
-        SDLogVerbose(@"Subscriber added to KVO channel: subscriber=%@ channel=%@ keyPath=%@", subscriber, channelName, keyPath);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"Subscriber added to KVO channel: subscriber=%@ channel=%@ keyPath=%@", subscriber, channelName, keyPath);
     }
 }
 
@@ -680,7 +696,7 @@
         // adds the subscriber to the channel
         [self addSubscriber:subscriber toChannelWithName:channelName options:kSubscribeOptionNone completion:completion kvoCompletion:nil];
         
-        SDLogVerbose(@"Subscriber added to KVO for all the properties: subscriber=%@ channel=%@", subscriber, channelName);
+        SDLogModuleVerbose(kUmarellLogModuleName, @"Subscriber added to KVO for all the properties: subscriber=%@ channel=%@", subscriber, channelName);
     }
 }
 
@@ -708,7 +724,7 @@
 
 - (void) observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
 {
-    SDLogVerbose(@"Change observed through KVO on object %@ - keyPath %@", object, keyPath);
+    SDLogModuleVerbose(kUmarellLogModuleName, @"Change observed through KVO on object %@ - keyPath %@", object, keyPath);
     SDEventBusChannel* channel = [self getChannelForObject:object keyPath:keyPath];
     if (channel)
     {
@@ -720,7 +736,7 @@
 
 - (void) didReceiveMemoryWarning
 {
-    SDLogWarning(@"Memory warning received: release all channels without subscribers.");
+    SDLogModuleWarning(kUmarellLogModuleName, @"Memory warning received: release all channels without subscribers.");
     for (SDEventBusChannel* channel in self.channels.allValues)
     {
         [self releaseSubscriptionInfosWithoutSubscriberOnChannel:channel];
@@ -730,7 +746,7 @@
 
 - (void) dealloc
 {
-    SDLogVerbose(@"SDEventBus deallocated");
+    SDLogModuleVerbose(kUmarellLogModuleName, @"SDEventBus deallocated");
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     
