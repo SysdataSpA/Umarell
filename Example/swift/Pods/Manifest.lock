@@ -1,0 +1,12 @@
+PODS:
+  - Umarell (1.1.1)
+
+DEPENDENCIES:
+  - Umarell
+
+SPEC CHECKSUMS:
+  Umarell: 9d003bc0a789aa903ee53d6dff8ec560908d78f6
+
+PODFILE CHECKSUM: da9e9056458adc798449c272bf7ff4c72d73badf
+
+COCOAPODS: 1.1.1

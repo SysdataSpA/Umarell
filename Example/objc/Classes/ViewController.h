@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef Umarell_h
-#define Umarell_h
+#import <UIKit/UIKit.h>
 
-#import "SDEventBus.h"
+@interface ViewController : UIViewController
 
-#endif /* Umarell_h */
+@end
+

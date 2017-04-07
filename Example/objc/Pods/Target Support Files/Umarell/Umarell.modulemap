@@ -1,0 +1,6 @@
+framework module Umarell {
+  umbrella header "Umarell-umbrella.h"
+
+  export *
+  module * { export * }
+}

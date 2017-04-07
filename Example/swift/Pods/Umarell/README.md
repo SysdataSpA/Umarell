@@ -159,19 +159,8 @@ deallocated.
 Like standard KVO, **you cannot observe the assignment or the nilification of
 the observed object, but only of his properties**.
 
-If you want to **observe a var in swift,** it has to be marked as dynamic,
-**otherwise KVO wont work**!
-
-From Apple documentation:
-
->   Apply this modifier to any member of a class that can be represented by
->   Objective-C. When you mark a member declaration with the dynamic modifier,
->   access to that member is always dynamically dispatched using the Objective-C
->   runtime. Access to that member is never inlined or devirtualized by the
->   compiler.
-
->   Because declarations marked with the dynamic modifier are dispatched using
->   the Objective-C runtime, they’re implicitly marked with the objc attribute.
+If you want to **observe an object in swift, **it has to be a subclass of
+NSObject,** **otherwise** KVO wont work!**
 
 Instead of a simple channel, the SDEventBus instantiate a KVO channel. KVO
 channels have only a difference with simple channels: \> You cannot indicate a
