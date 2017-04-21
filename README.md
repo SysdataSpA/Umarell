@@ -1,6 +1,10 @@
 Umarell
 =======
 
+[![Version](https://img.shields.io/cocoapods/v/Umarell.svg?style=flat)](http://cocoapods.org/pods/Umarell)
+[![License](https://img.shields.io/cocoapods/l/Umarell.svg?style=flat)](http://cocoapods.org/pods/Umarell)
+[![Platform](https://img.shields.io/cocoapods/p/Umarell.svg?style=flat)](http://cocoapods.org/pods/Umarell)
+
 ![Alt text](/Icon.png)
 
 Summary
