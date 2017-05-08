@@ -36,7 +36,11 @@ typedef NS_ENUM (NSUInteger, SubscribeOption)
     kSubscribeOptionReadPrevious          = 1,  // the subscriber is immediately notified with the last object previously published on channel.
 };
 
+#ifdef SD_LOGGER_AVAILABLE
+@interface SDEventBus : NSObject <SDLoggerModuleProtocol>
+#else
 @interface SDEventBus : NSObject
+#endif
 
 #pragma mark - Singleton Pattern
 
@@ -55,7 +59,7 @@ typedef NS_ENUM (NSUInteger, SubscribeOption)
  *
  *  @param subscriber   The object that subscribes to the channel.
  *  @param channelName  The name of the channel.
- *  @param options      Option for the subscription. See `SubscribeOption` enum for more infos.
+ *  @param option      Option for the subscription. See `SubscribeOption` enum for more infos.
  *  @param completion   Block called when an object is published through the channel.
  */
 - (void) addSubscriber:(id _Nonnull)subscriber toChannelWithName:(NSString* _Nonnull)channelName options:(SubscribeOption)option withCompletion:(PublishSubscribeBlock _Nullable)completion;

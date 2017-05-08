@@ -15,22 +15,7 @@
 #import "SDEventBus.h"
 #import "NSObject+SDEventBus.h"
 #import <UIKit/UIApplication.h>
-
-// This code is compatible with our logger "Plinio".
-#define kUmarellLogModuleName @"it.sysdata.Umarell"
-#define kUmarellLogModuleColor @"fbeed7"
-#ifdef SD_LOGGER_AVAILABLE
-#import "SDLogger.h"
-#else
-#define SDLogError(frmt, ...)   NSLog(frmt, ##__VA_ARGS__)
-#define SDLogWarning(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
-#define SDLogInfo(frmt, ...)    NSLog(frmt, ##__VA_ARGS__)
-#define SDLogVerbose(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
-#define SDLogModuleError(mdl, frmt, ...)   NSLog(frmt, ##__VA_ARGS__)
-#define SDLogModuleWarning(mdl, frmt, ...) NSLog(frmt, ##__VA_ARGS__)
-#define SDLogModuleInfo(mdl, frmt, ...)    NSLog(frmt, ##__VA_ARGS__)
-#define SDLogModuleVerbose(mdl, frmt, ...) NSLog(frmt, ##__VA_ARGS__)
-#endif
+#import "UmarellLogger.h"
 
 // ----------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------
@@ -225,19 +210,35 @@
     if (self)
     {
 #ifdef SD_LOGGER_AVAILABLE
-        // Log module
-        [[SDLogger sharedLogger] setLogLevel:SDLogLevelVerbose forModuleWithName:kUmarellLogModuleName];
-        SDLogModuleSetting* setting = [[SDLogger sharedLogger] moduleWithName:kUmarellLogModuleName];
-        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelVerbose] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelVerbose];
-        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelInfo] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelInfo];
-        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelWarning] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelWarning];
-        [setting setForegroundColor:[setting foregroundColorForLogLevel:SDLogLevelError] andBackgroundColor:[UIColor colorWithHexString:kUmarellLogModuleColor] forLogLevel:SDLogLevelError];
+        SDLogLevel logLevel = DEBUG ? SDLogLevelInfo : SDLogLevelWarning;
+        [[SDLogger sharedLogger] setLogLevel:logLevel forModuleWithName:self.loggerModuleName];
 #endif
         _channels = [NSMutableDictionary new];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
 }
+
+
+#pragma mark - SDLoggerModuleProtocol
+
+#ifdef SD_LOGGER_AVAILABLE
+
+- (NSString*) loggerModuleName
+{
+    return kUmarellLogModuleName;
+}
+
+- (SDLogLevel) loggerModuleLogLevel
+{
+    return [[SDLogger sharedLogger] logLevelForModuleWithName:self.loggerModuleName];
+}
+
+- (void) setLoggerModuleLogLevel:(SDLogLevel)level
+{
+    [[SDLogger sharedLogger] setLogLevel:level forModuleWithName:self.loggerModuleName];
+}
+#endif
 
 /**
  *  Retrieves the channel with the given name.
@@ -378,7 +379,7 @@
  *
  *  @param subscriber       The object that subscribes the channel.
  *  @param channelName      The name of the channel.
- *  @param options          Option for the subscription. See `SubscribeOption` enum for more infos.
+ *  @param option           Option for the subscription. See `SubscribeOption` enum for more infos.
  *  @param completion       Block called when an object is published through the channel.
  *  @param kvoCompletion    Block called when the value of the observer keyPath changes.
  */
