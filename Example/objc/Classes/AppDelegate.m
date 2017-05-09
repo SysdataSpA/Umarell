@@ -14,6 +14,8 @@
 
 #import "AppDelegate.h"
 
+#import <Umarell/SDEventBus.h>
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +25,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+#if BLABBER
+    [[SDEventBus sharedInstance] setLoggerModuleLogLevel:SDLogLevelVerbose];
+#endif
+    
     return YES;
 }
 

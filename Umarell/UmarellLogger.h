@@ -15,8 +15,7 @@
 // This code is compatible with our logger "Blabber".
 #define kUmarellLogModuleName @"Umarell"
 
-#if __has_include("SDLogger.h") || __has_include("Blabber/SDLogger.h")
-#define SD_LOGGER_AVAILABLE 1
+#if BLABBER
 #import <Blabber/SDLogger.h>
 #else
 #define SDLogError(frmt, ...)   NSLog(frmt, ##__VA_ARGS__)

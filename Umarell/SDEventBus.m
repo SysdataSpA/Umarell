@@ -209,7 +209,7 @@
     self = [super init];
     if (self)
     {
-#ifdef SD_LOGGER_AVAILABLE
+#if BLABBER
         SDLogLevel logLevel = DEBUG ? SDLogLevelInfo : SDLogLevelWarning;
         [[SDLogger sharedLogger] setLogLevel:logLevel forModuleWithName:self.loggerModuleName];
 #endif
@@ -222,7 +222,7 @@
 
 #pragma mark - SDLoggerModuleProtocol
 
-#ifdef SD_LOGGER_AVAILABLE
+#if BLABBER
 
 - (NSString*) loggerModuleName
 {

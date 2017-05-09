@@ -1,12 +1,23 @@
 PODS:
-  - Umarell (1.1.1)
+  - Blabber (1.1.3):
+    - Blabber/Core (= 1.1.3)
+  - Blabber/Core (1.1.3)
+  - Umarell/Blabber (1.2.0):
+    - Blabber
+    - Umarell/Core
+  - Umarell/Core (1.2.0)
 
 DEPENDENCIES:
-  - Umarell
+  - Umarell/Blabber (from `../../`)
+
+EXTERNAL SOURCES:
+  Umarell:
+    :path: ../../
 
 SPEC CHECKSUMS:
-  Umarell: 9d003bc0a789aa903ee53d6dff8ec560908d78f6
+  Blabber: 669f61f7d0a17ed412cb798c1056bb2cc5e88579
+  Umarell: 1c027e059950f19ab380ee6d52109a86e73d1a06
 
-PODFILE CHECKSUM: da9e9056458adc798449c272bf7ff4c72d73badf
+PODFILE CHECKSUM: 9bf687adcae4de0476a728ddf6319340a7fb7e62
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

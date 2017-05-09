@@ -10,9 +10,16 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Umarell'
+  s.subspec 'Core' do |co|
+     co.source_files = 'Umarell'
+  end
 
   s.subspec 'Blabber' do |bl|
+     bl.dependency 'Umarell/Core'
      bl.dependency 'Blabber'
+     bl.xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'BLABBER=1' }
   end
+
+  s.default_subspec = 'Core'
+  
 end

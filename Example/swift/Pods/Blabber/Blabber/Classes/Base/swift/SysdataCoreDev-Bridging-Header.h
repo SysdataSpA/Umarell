@@ -12,12 +12,5 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/Foundation.h>
-
-#define EVENTBUS_OBSERV_ALL_PROPERTIES_KEYS @"observableSelf"
-
-@interface NSObject (SDEventBus)
-
-@property (nonatomic, strong, readonly, nonnull) NSString* instanceUniqueIdentifier;
-
-@end
+#import <UIKit/UIKit.h>
+#import "SDLogger.h"

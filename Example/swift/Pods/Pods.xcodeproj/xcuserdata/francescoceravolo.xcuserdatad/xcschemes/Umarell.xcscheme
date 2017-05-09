@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9630481E5F1B9B60F2F8048C88BD9FEB'
+               BlueprintIdentifier = '866C5C3E2C3EF4D1B8228C205244EDBB'
                BlueprintName = 'Umarell'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Umarell.framework'>

@@ -3,6 +3,6 @@ use_frameworks!
 
 target 'UmarellDemo' do
 
-  pod 'Umarell'
+  pod 'Umarell/Blabber', :path => '../../'
 
 end

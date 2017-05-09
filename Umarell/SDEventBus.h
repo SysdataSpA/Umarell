@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
+#import "UmarellLogger.h"
 
 typedef void (^ PublishSubscribeBlock)(id _Nullable publishedObject);
 typedef void (^ PublishSubscribeKVOBlock)(id _Nonnull changedObject, NSString* _Nonnull keypath);
@@ -36,7 +37,7 @@ typedef NS_ENUM (NSUInteger, SubscribeOption)
     kSubscribeOptionReadPrevious          = 1,  // the subscriber is immediately notified with the last object previously published on channel.
 };
 
-#ifdef SD_LOGGER_AVAILABLE
+#if BLABBER
 @interface SDEventBus : NSObject <SDLoggerModuleProtocol>
 #else
 @interface SDEventBus : NSObject
