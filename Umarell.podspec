@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author           = { "Sysdata Digital" => "team.mobile@sysdata.it" }
   s.source           = { :git => "https://github.com/SysdataSpA/Umarell.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.ios.deployment_target = '8.0'
 
   s.subspec 'Core' do |co|
      co.source_files = 'Umarell'
