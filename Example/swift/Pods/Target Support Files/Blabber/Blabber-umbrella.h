@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "SDDDFormatter.h"
 #import "SDLogger.h"
 #import "SDLogModules.h"
 #import "SysdataCoreDev-Bridging-Header.h"

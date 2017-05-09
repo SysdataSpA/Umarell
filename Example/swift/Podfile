@@ -4,5 +4,6 @@ use_frameworks!
 target 'UmarellDemo' do
 
   pod 'Umarell/Blabber', :path => '../../'
+  pod 'Blabber/CocoaLumberjack'
 
 end

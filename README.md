@@ -26,6 +26,25 @@ Introduction
 **Umarell** is a easy-to-use library that makes simple the implementation of the
 Publish-Subscribe pattern in Objective-C.
 
+Installation
+=============
+You can use both in your Objective-c or Swift App using last available pod
+
+```
+pod 'Umarell'
+```
+
+If you want to use our logger framework Blabber, use subpod
+```
+pod 'Umarell/Blabber'
+```
+With Blabber you can manage all log messages or use CocoaLumberjack. In this case import also the corresponding subpod. [See more](https://github.com/SysdataSpA/Blabber) details...
+```
+pod 'Umarell/Blabber'
+pod 'Blabber/CocoaLumberjack'
+```
+
+
 The Event Bus
 =============
 
@@ -239,3 +258,5 @@ removeSubscriber(Any, to: Any, keyPath: String)
 
 removeSubscriber(Any, to: Any)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
