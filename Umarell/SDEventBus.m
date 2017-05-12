@@ -210,7 +210,10 @@
     if (self)
     {
 #if BLABBER
-        SDLogLevel logLevel = DEBUG ? SDLogLevelInfo : SDLogLevelWarning;
+        SDLogLevel logLevel = SDLogLevelWarning;
+#if DEBUG
+        logLevel = SDLogLevelInfo;
+#endif
         [[SDLogger sharedLogger] setLogLevel:logLevel forModuleWithName:self.loggerModuleName];
 #endif
         _channels = [NSMutableDictionary new];
