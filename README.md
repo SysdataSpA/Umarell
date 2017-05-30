@@ -20,6 +20,8 @@ Summary
 
 >   [SDEventBus as KVO wrapper](#sdeventbus-as-kvo-wrapper)
 
+![Example](/umarell_example.gif)
+
 Introduction
 ============
 
