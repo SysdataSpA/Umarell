@@ -18,8 +18,8 @@
 		45D8FB0ACAD37D886F532F9E4DF8D24D /* UmarellLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 9172E26649F19BA4665C852C3FFB13C9 /* UmarellLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFFB24B194F595B512D2425195052BF /* SDLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6B4CF19F2837769DB5352AE19556C8 /* SDLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DDAC9AEE40A0222EE8102388FAE89F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BB18268F36DBEE0B9DAFA764F5D52F /* Foundation.framework */; };
-		725A47343C45AA808C1CDC18EE2B93DA /* NSObject+SDEventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CE23A9673B432DD37D7FD548B965D7FB /* NSObject+SDEventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		93009C4501518B5D92AEB20CB37303B9 /* NSObject+SDEventBus.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD40E90C1DED19C7CB717A0EDFBAC80 /* NSObject+SDEventBus.m */; };
+		725A47343C45AA808C1CDC18EE2B93DA /* NSObject+Umarell.h in Headers */ = {isa = PBXBuildFile; fileRef = CE23A9673B432DD37D7FD548B965D7FB /* NSObject+Umarell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93009C4501518B5D92AEB20CB37303B9 /* NSObject+Umarell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD40E90C1DED19C7CB717A0EDFBAC80 /* NSObject+Umarell.m */; };
 		AB0D54DCC8A8DA9231AC467CA20B60EB /* SDEventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 98EDA08602C0F65E9ABB24226BD771D4 /* SDEventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4EF1BDDD86D09871E7FEF9971EB8161 /* Pods-UmarellDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 584CCB94BBE867C1F26777DF8633D124 /* Pods-UmarellDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B632B4754F22783E60651065CC883AFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BB18268F36DBEE0B9DAFA764F5D52F /* Foundation.framework */; };
@@ -57,12 +57,12 @@
 /* Begin PBXFileReference section */
 		02DACB304D797D8F7EA4C3D0D62A325E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11EE8E0927AC951947B84F7593B06998 /* Pods-UmarellDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UmarellDemo-dummy.m"; sourceTree = "<group>"; };
-		163B05E292EFB4219175D9010B0FA8FB /* Blabber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Blabber.modulemap; sourceTree = "<group>"; };
-		1DBC6AA3E059520674F4370A5C5B08FF /* Blabber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Blabber.framework; path = Blabber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		163B05E292EFB4219175D9010B0FA8FB /* Blabber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Blabber.modulemap; sourceTree = "<group>"; };
+		1DBC6AA3E059520674F4370A5C5B08FF /* Blabber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blabber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4C0EF5C84A5A12912D220C66AAB06F /* Blabber-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Blabber-dummy.m"; sourceTree = "<group>"; };
-		226753292519362C84063F2F23331B57 /* Pods_UmarellDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_UmarellDemo.framework; path = "Pods-UmarellDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		226753292519362C84063F2F23331B57 /* Pods_UmarellDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UmarellDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		237EDE6CAC2A4D23F9FC1C4A026F15F1 /* SDLogModules.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLogModules.h; path = "Blabber/Classes/Base/obj-c/SDLogModules.h"; sourceTree = "<group>"; };
-		27B6E67D243D1F1FACA4B902382C121F /* Umarell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Umarell.framework; path = Umarell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B6E67D243D1F1FACA4B902382C121F /* Umarell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Umarell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3138E90A72D2F0EC27764D5A1DEA29FF /* Umarell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Umarell-dummy.m"; sourceTree = "<group>"; };
 		3C31FAE9E2A575B096B5FC53FAD2760C /* Blabber-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Blabber-umbrella.h"; sourceTree = "<group>"; };
 		47B4A6B5BEF745A22E80B9331B2100CC /* Umarell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Umarell-umbrella.h"; sourceTree = "<group>"; };
@@ -70,12 +70,12 @@
 		575FEFFBD61CCD1EDFBE5CDA92B1E5F3 /* Umarell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Umarell.h; sourceTree = "<group>"; };
 		584CCB94BBE867C1F26777DF8633D124 /* Pods-UmarellDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UmarellDemo-umbrella.h"; sourceTree = "<group>"; };
 		68CE6781F6C893240CBFB9CC2A143C12 /* Pods-UmarellDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UmarellDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6EB1244C90B81E728E2528B7C5CD21A6 /* Pods-UmarellDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-UmarellDemo.modulemap"; sourceTree = "<group>"; };
+		6EB1244C90B81E728E2528B7C5CD21A6 /* Pods-UmarellDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-UmarellDemo.modulemap"; sourceTree = "<group>"; };
 		78C8FA252FE5221E98ABAF7812AEAE74 /* Blabber.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Blabber.xcconfig; sourceTree = "<group>"; };
 		891F178158F91B3B7B03785468E76CD4 /* Pods-UmarellDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-UmarellDemo-resources.sh"; sourceTree = "<group>"; };
 		8C711829E49479EE960FC64D5A653689 /* Pods-UmarellDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-UmarellDemo-frameworks.sh"; sourceTree = "<group>"; };
 		9172E26649F19BA4665C852C3FFB13C9 /* UmarellLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = UmarellLogger.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		958AE7B63D09606CDA6196B03A0FC51E /* Pods-UmarellDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UmarellDemo.release.xcconfig"; sourceTree = "<group>"; };
 		98EDA08602C0F65E9ABB24226BD771D4 /* SDEventBus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SDEventBus.h; sourceTree = "<group>"; };
 		9A48F681D89D45AF5CC4EE176C1A274B /* Umarell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Umarell-prefix.pch"; sourceTree = "<group>"; };
@@ -83,16 +83,16 @@
 		A4D45DCC7F00D9F76A043BB4730D50CF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A531D975BA103149043D9623C258FF6E /* Pods-UmarellDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UmarellDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		A6B9A4251A01B6487A38AFCB459091C9 /* Blabber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blabber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B22D7E1C3E28CE08A3DCCCC3E9E3D306 /* Umarell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Umarell.modulemap; sourceTree = "<group>"; };
+		B22D7E1C3E28CE08A3DCCCC3E9E3D306 /* Umarell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Umarell.modulemap; sourceTree = "<group>"; };
 		CD0EC7B21671691C63B6846762062F53 /* SysdataCoreDev-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SysdataCoreDev-Bridging-Header.h"; path = "Blabber/Classes/Base/swift/SysdataCoreDev-Bridging-Header.h"; sourceTree = "<group>"; };
-		CE23A9673B432DD37D7FD548B965D7FB /* NSObject+SDEventBus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSObject+SDEventBus.h"; sourceTree = "<group>"; };
+		CE23A9673B432DD37D7FD548B965D7FB /* NSObject+Umarell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSObject+Umarell.h"; sourceTree = "<group>"; };
 		D01A43792D3E57FD74E474E690616114 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2CF789E5BDF47FB97C71DDE699335A6 /* Pods-UmarellDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UmarellDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		DB6B4CF19F2837769DB5352AE19556C8 /* SDLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDLogger.h; path = "Blabber/Classes/Base/obj-c/SDLogger.h"; sourceTree = "<group>"; };
 		E13FC924F17AB6BF5F03C588CC778684 /* Umarell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Umarell.xcconfig; sourceTree = "<group>"; };
 		E333D98171CE133DEBAACD0C1A3F1879 /* SDEventBus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SDEventBus.m; sourceTree = "<group>"; };
 		E8BB18268F36DBEE0B9DAFA764F5D52F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		EFD40E90C1DED19C7CB717A0EDFBAC80 /* NSObject+SDEventBus.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SDEventBus.m"; sourceTree = "<group>"; };
+		EFD40E90C1DED19C7CB717A0EDFBAC80 /* NSObject+Umarell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Umarell.m"; sourceTree = "<group>"; };
 		F1B55225C270EA4C027F85055E84E99B /* Blabber-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Blabber-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,14 +154,13 @@
 		2CFC41E8CF285FD742B3558FF2215D2D /* Umarell */ = {
 			isa = PBXGroup;
 			children = (
-				CE23A9673B432DD37D7FD548B965D7FB /* NSObject+SDEventBus.h */,
-				EFD40E90C1DED19C7CB717A0EDFBAC80 /* NSObject+SDEventBus.m */,
+				CE23A9673B432DD37D7FD548B965D7FB /* NSObject+Umarell.h */,
+				EFD40E90C1DED19C7CB717A0EDFBAC80 /* NSObject+Umarell.m */,
 				98EDA08602C0F65E9ABB24226BD771D4 /* SDEventBus.h */,
 				E333D98171CE133DEBAACD0C1A3F1879 /* SDEventBus.m */,
 				575FEFFBD61CCD1EDFBE5CDA92B1E5F3 /* Umarell.h */,
 				9172E26649F19BA4665C852C3FFB13C9 /* UmarellLogger.h */,
 			);
-			name = Umarell;
 			path = Umarell;
 			sourceTree = "<group>";
 		};
@@ -284,7 +283,6 @@
 				D8BDEE9059BD2F2B4F3642757F81E38C /* Core */,
 				9579C475E9E5891BD96DED29F188EA6B /* Support Files */,
 			);
-			name = Blabber;
 			path = Blabber;
 			sourceTree = "<group>";
 		};
@@ -295,7 +293,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				725A47343C45AA808C1CDC18EE2B93DA /* NSObject+SDEventBus.h in Headers */,
+				725A47343C45AA808C1CDC18EE2B93DA /* NSObject+Umarell.h in Headers */,
 				AB0D54DCC8A8DA9231AC467CA20B60EB /* SDEventBus.h in Headers */,
 				306AEB9C7C159F06D43EB26E3EB5577A /* Umarell-umbrella.h in Headers */,
 				FDBDD592FBD370ABE2A6D6290CF54D0D /* Umarell.h in Headers */,
@@ -412,7 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93009C4501518B5D92AEB20CB37303B9 /* NSObject+SDEventBus.m in Sources */,
+				93009C4501518B5D92AEB20CB37303B9 /* NSObject+Umarell.m in Sources */,
 				B71D7B6DDF83BD9723AE0DBBCD2F49C8 /* SDEventBus.m in Sources */,
 				20D7E82039A36D7AA93CE885CC57DD7C /* Umarell-dummy.m in Sources */,
 			);

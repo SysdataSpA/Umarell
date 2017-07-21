@@ -16,7 +16,7 @@
 
 #define EVENTBUS_OBSERV_ALL_PROPERTIES_KEYS @"observableSelf"
 
-@interface NSObject (SDEventBus)
+@interface NSObject (Umarell)
 
 @property (nonatomic, strong, readonly, nonnull) NSString* instanceUniqueIdentifier;
 

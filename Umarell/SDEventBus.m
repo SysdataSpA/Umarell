@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #import "SDEventBus.h"
-#import "NSObject+SDEventBus.h"
+#import "NSObject+Umarell.h"
 #import <UIKit/UIApplication.h>
 #import "UmarellLogger.h"
 

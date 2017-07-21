@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "NSObject+SDEventBus.h"
+#import "NSObject+Umarell.h"
 #import <objc/runtime.h> // very important to import this!
 
 #define EVENT_BUS_KEY_UNIQUE_IDENTIFIER @"uniqueIdentifier"
 
-@implementation NSObject (SDEventBus)
+@implementation NSObject (Umarell)
 
 + (NSSet*) keyPathsForValuesAffectingObservableSelf
 {

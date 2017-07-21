@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "NSObject+SDEventBus.h"
+#import "NSObject+Umarell.h"
 #import "SDEventBus.h"
 #import "Umarell.h"
 #import "UmarellLogger.h"
